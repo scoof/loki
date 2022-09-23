@@ -87,6 +87,7 @@ type DefaultClient struct {
 	AuthHeader      string
 	ProxyURL        string
 	BackoffConfig   BackoffConfig
+	Cookie          string
 }
 
 // Query uses the /api/v1/query endpoint to execute an instant query
@@ -417,6 +418,10 @@ func (c *DefaultClient) getHTTPRequestHeader() (http.Header, error) {
 		}
 		h.Set(c.AuthHeader, "Bearer "+bearerToken)
 	}
+
+	if c.Cookie != "" {
+		h.Set("Cookie", c.Cookie)
+        }
 	return h, nil
 }
 
