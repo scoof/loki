@@ -17,7 +17,7 @@ require (
 	github.com/alicebob/miniredis/v2 v2.22.0
 	github.com/aws/aws-sdk-go v1.44.102
 	github.com/baidubce/bce-sdk-go v0.9.111
-	github.com/bmatcuk/doublestar v1.2.2
+	github.com/bmatcuk/doublestar v1.3.4
 	github.com/bradfitz/gomemcache v0.0.0-20190913173617-a41fca850d0b
 	github.com/buger/jsonparser v1.1.1
 	github.com/c2h5oh/datasize v0.0.0-20200112174442-28bbd4740fee
