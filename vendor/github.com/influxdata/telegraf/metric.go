@@ -32,6 +32,7 @@ type Field struct {
 // Metric is the type of data that is processed by Telegraf.  Input plugins,
 // and to a lesser degree, Processor and Aggregator plugins create new Metrics
 // and Output plugins write them.
+// nolint:interfacebloat // conditionally allow to contain more methods
 type Metric interface {
 	// Name is the primary identifier for the Metric and corresponds to the
 	// measurement in the InfluxDB data model.
@@ -57,9 +58,7 @@ type Metric interface {
 	Time() time.Time
 
 	// Type returns a general type for the entire metric that describes how you
-	// might interpret, aggregate the values.
-	//
-	// This method may be removed in the future and its use is discouraged.
+	// might interpret, aggregate the values. Used by prometheus and statsd.
 	Type() ValueType
 
 	// SetName sets the metric name.
@@ -122,14 +121,4 @@ type Metric interface {
 	// Drop marks the metric as processed successfully without being written
 	// to any output.
 	Drop()
-
-	// SetAggregate indicates the metric is an aggregated value.
-	//
-	// This method may be removed in the future and its use is discouraged.
-	SetAggregate(bool)
-
-	// IsAggregate returns true if the Metric is an aggregate.
-	//
-	// This method may be removed in the future and its use is discouraged.
-	IsAggregate() bool
 }
